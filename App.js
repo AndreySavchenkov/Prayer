@@ -14,7 +14,6 @@ import {IconSvgTrash} from "./src/components/common/img/icons/IconSvgTrash";
 import {IconSvgUser} from "./src/components/common/img/icons/IconSvgUser";
 import {IconSvgPrayer} from "./src/components/common/img/icons/IconSvgPrayer";
 import {IconSvgPrayerLine} from "./src/components/common/img/icons/IconSvgPrayerLine";
-import {IconSvgAdd} from "./src/components/common/img/icons/IconSvgAdd";
 import {IconSvgUserPlus} from "./src/components/common/img/icons/IconSvgUserPlus";
 import {IconSvgEdit} from "./src/components/common/img/icons/IconSvgEdit";
 import {IconSvgState} from "./src/components/common/img/icons/IconSvgState";
@@ -25,8 +24,9 @@ import {IconSvgCheckBoxOn} from "./src/components/common/img/icons/IconSvgCheckB
 import {AvatarWithImage} from "./src/components/common/img/avatars/AvatarWithImage";
 import {AvatarWithAlphabet} from "./src/components/common/img/avatars/AvatarWithAlphabet";
 import {Input} from "./src/components/common/Input";
+import {Comment} from "./src/components/common/img/lists/Comment";
 
-const photo = './src/assets/img/avatarAlphabet.png'
+
 
 const App = () => {
 
@@ -40,7 +40,6 @@ const App = () => {
             <IconSvgUser/>
             <IconSvgPrayer/>
             <IconSvgPrayerLine/>
-            <IconSvgAdd/>
             <IconSvgUserPlus/>
             <IconSvgEdit/>
             <IconSvgState/>
@@ -53,6 +52,7 @@ const App = () => {
             <AvatarWithAlphabet/>
 
             <Input/>
+            <Comment/>
 
         </SafeAreaView>
     );

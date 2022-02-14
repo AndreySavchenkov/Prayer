@@ -22,7 +22,7 @@ export const IconSvgMainUser = () => (
             />
         </Mask>
         <G mask="url(#a)">
-            <Path fill="#A369EC" d="M-4-2h24v24H-4z" />
+            <Path fill="#72A8BC" d="M-4-2h24v24H-4z" />
         </G>
     </Svg>
 )

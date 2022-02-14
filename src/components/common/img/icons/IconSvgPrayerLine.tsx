@@ -22,7 +22,7 @@ export const IconSvgPrayerLine = () => (
             />
         </Mask>
         <G mask="url(#a)">
-            <Path fill="#00C6AE" d="M.001-4h29v29h-29z" />
+            <Path fill="#72A8BC" d="M.001-4h29v29h-29z" />
         </G>
     </Svg>
 )

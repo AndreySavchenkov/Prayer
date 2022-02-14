@@ -7,7 +7,7 @@ export const Input = () => {
         <View style={styles.inputContainer}>
             <TextInput
                 style={styles.input}
-                selectionColor={'#A369EC'}
+                selectionColor={'#72A8BC'}
                 placeholder="Add a prayer..."
             />
             <View style={styles.iconAdd}>
@@ -29,7 +29,7 @@ export const Input = () => {
                         />
                     </Mask>
                     <G mask="url(#a)">
-                        <Path fill="#A369EC" d="M-1-1h24v24H-1z" />
+                        <Path fill="#72A8BC" d="M-1-1h24v24H-1z" />
                     </G>
                 </Svg>
             </View>
@@ -38,7 +38,9 @@ export const Input = () => {
     )
 }
 const styles = StyleSheet.create({
-    inputContainer: {},
+    inputContainer: {
+        margin: 15,
+    },
     input: {
         paddingLeft: 50,
         width: 345,
@@ -48,14 +50,9 @@ const styles = StyleSheet.create({
         lineHeight: 20,
         color: '#A499B1',
         backgroundColor: '#FFFFFF',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 5,
-        },
-        shadowOpacity: 0.36,
-        shadowRadius: 6.68,
-        elevation: 11,
+        borderWidth: 1,
+        borderColor: '#E5E5E5',
+
     },
     iconAdd: {
         elevation:12,

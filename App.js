@@ -25,36 +25,43 @@ import {AvatarWithImage} from "./src/components/common/img/avatars/AvatarWithIma
 import {AvatarWithAlphabet} from "./src/components/common/img/avatars/AvatarWithAlphabet";
 import {Input} from "./src/components/common/Input";
 import {Comment} from "./src/components/common/img/lists/Comment";
+import {PrayerList} from "./src/components/common/img/lists/PrayerList";
+import {MyDesk} from "./src/components/screens/myDesk/MyDesk";
+import {Column} from "./src/components/screens/Column/Column";
+import {Prayer} from "./src/components/screens/Prayer/Prayer";
 
 
 
 const App = () => {
 
     return (
-        <SafeAreaView>
-            <Button text={'Show Answered Prayers'}/>
-
-            <IconSvgMenu/>
-            <IconSvgBack/>
-            <IconSvgTrash/>
-            <IconSvgUser/>
-            <IconSvgPrayer/>
-            <IconSvgPrayerLine/>
-            <IconSvgUserPlus/>
-            <IconSvgEdit/>
-            <IconSvgState/>
-            <IconSvgStateLine/>
-            <IconSvgMainUser/>
-            <IconSvgCheckBoxOff/>
-            <IconSvgCheckBoxOn/>
-
-            <AvatarWithImage/>
-            <AvatarWithAlphabet/>
-
-            <Input/>
-            <Comment/>
-
-        </SafeAreaView>
+        // <SafeAreaView>
+        //     <Button text={'Show Answered Prayers'}/>
+        //
+        //     <IconSvgMenu/>
+        //     <IconSvgBack/>
+        //     <IconSvgTrash/>
+        //     <IconSvgUser/>
+        //     <IconSvgPrayer/>
+        //     <IconSvgPrayerLine/>
+        //     <IconSvgUserPlus/>
+        //     <IconSvgEdit/>
+        //     <IconSvgState/>
+        //     <IconSvgStateLine/>
+        //     <IconSvgMainUser/>
+        //     <IconSvgCheckBoxOff/>
+        //     <IconSvgCheckBoxOn/>
+        //
+        //     <AvatarWithImage/>
+        //     <AvatarWithAlphabet/>
+        //
+        //     <Input/>
+        //     <Comment/>
+        //     <PrayerList/>
+        // </SafeAreaView>
+        // <MyDesk/>
+        // <Column/>
+        <Prayer/>
     );
 };
 

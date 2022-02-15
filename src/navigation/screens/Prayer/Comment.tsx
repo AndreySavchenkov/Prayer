@@ -1,6 +1,6 @@
 import * as React from "react";
 import {StyleSheet, View, Text} from "react-native";
-import {AvatarWithImage} from "../avatars/AvatarWithImage";
+import {AvatarWithImage} from "../../../components/avatars/AvatarWithImage";
 
 
 export const Comment = () => {

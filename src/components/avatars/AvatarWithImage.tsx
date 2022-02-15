@@ -10,7 +10,7 @@ export const AvatarWithImage = () => {
     return(
         <View>
             <Image style={{width: 50, height: 50}}
-                   source={require('./../../../../assets/img/avatar.png')} />
+                   source={require('../../assets/img/avatar.png')} />
         </View>
     )
 }

@@ -2,7 +2,7 @@ import * as React from "react";
 import {ScrollView, StyleSheet, View, Text} from "react-native";
 import Svg, {G, Mask, Path} from "react-native-svg";
 
-export const MyDeskHeader = () => {
+export const DeskHeader = () => {
     return (
             <View>
                 <View style={styles.header}>

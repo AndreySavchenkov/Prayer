@@ -1,11 +1,12 @@
 import * as React from "react";
 import {View, StyleSheet, Text} from "react-native";
-import {IconSvgStateLine} from "../icons/IconSvgStateLine";
-import {IconSvgCheckBoxOff} from "../icons/IconSvgCheckBoxOff";
-import {IconSvgMainUser} from "../icons/IconSvgMainUser";
-import {IconSvgPrayerLine} from "../icons/IconSvgPrayerLine";
+import {IconSvgStateLine} from "../../../components/icons/IconSvgStateLine";
+import {IconSvgCheckBoxOff} from "../../../components/icons/IconSvgCheckBoxOff";
+import {IconSvgMainUser} from "../../../components/icons/IconSvgMainUser";
+import {IconSvgPrayerLine} from "../../../components/icons/IconSvgPrayerLine";
+import {IconSvgCheckBoxOn} from "../../../components/icons/IconSvgCheckBoxOn";
 
-export const PrayerList = () => {
+export const PrayerListDone = () => {
     return (
         <View style={styles.listContainer}>
             <View style={styles.leftContainer}>
@@ -13,7 +14,7 @@ export const PrayerList = () => {
                     <IconSvgStateLine/>
                 </View>
                 <View style={styles.checkBox}>
-                    <IconSvgCheckBoxOff/>
+                    <IconSvgCheckBoxOn/>
                 </View>
                 <Text style={styles.textComment}>Prayer item two...</Text>
             </View>
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         lineHeight: 20,
         color: '#40435B',
+        textDecorationLine: 'line-through',
     },
     leftContainer: {
         flexDirection: 'row',

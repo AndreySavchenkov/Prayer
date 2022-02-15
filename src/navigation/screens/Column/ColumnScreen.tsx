@@ -1,12 +1,12 @@
 import * as React from "react";
 import {ScrollView, View, StyleSheet} from "react-native";
 import {ColumnHeader} from "./ColumnHeader";
-import {Input} from "../../common/Input";
-import {PrayerList} from "../../common/img/lists/PrayerList";
-import {Button} from "../../common/button/Button";
-import {PrayerListDone} from "../../common/img/lists/PrayerListDone";
+import {Input} from "./Input";
+import {PrayerList} from "./PrayerList";
+import {Button} from "./Button";
+import {PrayerListDone} from "./PrayerListDone";
 
-export const Column = () => {
+export const ColumnScreen = () => {
     return (
         <View>
             <ColumnHeader/>

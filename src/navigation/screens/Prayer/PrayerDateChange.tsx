@@ -1,6 +1,6 @@
 import * as React from "react";
 import {StyleSheet, Text, View} from "react-native";
-import {IconSvgStateLine} from "../../common/img/icons/IconSvgStateLine";
+import {IconSvgStateLine} from "../../../components/icons/IconSvgStateLine";
 
 export const PrayerDateChange = () => {
     return(

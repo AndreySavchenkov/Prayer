@@ -1,8 +1,13 @@
 import * as React from "react";
-import {View, Text, StyleSheet} from "react-native";
-import {IconSvgSettings} from "../../common/img/icons/IconSvgSettings";
+import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import {IconSvgSettings} from "../../../components/icons/IconSvgSettings";
+import Svg, {G, Mask, Path} from "react-native-svg";
+import {useNavigation} from "@react-navigation/native";
 
 export const ColumnHeader = () => {
+
+    const navigation = useNavigation();
+
     return (
         <View>
             <View style={styles.container}>
@@ -19,6 +24,33 @@ export const ColumnHeader = () => {
                     </View>
                 </View>
             </View>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+                <View style={styles.iconBack}>
+                    <Svg width={18} height={16} fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <Mask
+                            id="a"
+                            style={{
+                                maskType: "alpha",
+                            }}
+                            maskUnits="userSpaceOnUse"
+                            x={0}
+                            y={0}
+                            width={18}
+                            height={16}
+                        >
+                            <Path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M8.707 1.707A1 1 0 0 0 7.293.293l-7 7a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414-1.414L3.414 9H17a1 1 0 0 0 0-2H3.414l5.293-5.293Z"
+                                fill="#72A8BC"
+                            />
+                        </Mask>
+                        <G mask="url(#a)">
+                            <Path fill="#72A8BC" d="M-3-4h24v24H-3z"/>
+                        </G>
+                    </Svg>
+                </View>
+            </TouchableOpacity>
             <View style={styles.icon}>
                 <IconSvgSettings/>
             </View>
@@ -85,5 +117,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 20,
         right: 15,
+    },
+    iconBack: {
+        position: 'absolute',
+        bottom: 60,
+        left: 15,
     }
 });

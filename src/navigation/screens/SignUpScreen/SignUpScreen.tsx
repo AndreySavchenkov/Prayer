@@ -3,21 +3,32 @@ import {Text, View, StyleSheet, TextInput, Button, Alert} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import {Routes} from "../../routes";
 import {useNavigation} from "@react-navigation/native";
+import {useDispatch} from "react-redux";
+import {getToken, setToken} from "../../../store/loginSlice";
+import {authApi, columnApi} from "../../../api/api";
 // import Constants from 'expo-constants';
 
 
-export const SignInScreen = () => {
+export const SignUpScreen = () => {
 
+    const dispatch = useDispatch();
     const navigation = useNavigation();
 
     const {register, setValue, handleSubmit, control, reset, formState: {errors}} = useForm({
         defaultValues: {
             Email: '',
+            Name: '',
             Password: ''
         }
     });
+
+
+    dispatch(getToken('eda','dafds','asdfas'))
+
+
     const onSubmit = data => {
         console.log(data);
+        // dispatch(getToken(data.Email,data.Name,data.Password))
     };
 
     const onChange = arg => {
@@ -26,11 +37,10 @@ export const SignInScreen = () => {
         };
     };
 
-    console.log('errors', errors);
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Sign In</Text>
+            <Text style={styles.title}>Sign Up</Text>
             <Text style={styles.label}>Email</Text>
             <Controller
                 control={control}
@@ -43,6 +53,20 @@ export const SignInScreen = () => {
                     />
                 )}
                 name="Email"
+                rules={{required: true}}
+            />
+            <Text style={styles.label}>Name</Text>
+            <Controller
+                control={control}
+                render={({field: {onChange, onBlur, value}}) => (
+                    <TextInput
+                        style={styles.input}
+                        onBlur={onBlur}
+                        onChangeText={value => onChange(value)}
+                        value={value}
+                    />
+                )}
+                name="Name"
                 rules={{required: true}}
             />
             <Text style={styles.label}>Password</Text>
@@ -64,7 +88,7 @@ export const SignInScreen = () => {
                 <Button
                     style={styles.buttonInner}
                     color
-                    title="Sign In"
+                    title="Sign Up"
                     onPress={handleSubmit(onSubmit)}
                 />
             </View>
@@ -72,8 +96,8 @@ export const SignInScreen = () => {
                 <Button
                     style={styles.buttonInner}
                     color
-                    title="Sign Up"
-                    onPress={() => navigation.navigate(Routes.SignUpScreen)}
+                    title="Sign In"
+                    onPress={() => navigation.navigate(Routes.SignInScreen)}
                 />
             </View>
         </View>

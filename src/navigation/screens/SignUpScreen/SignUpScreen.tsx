@@ -6,6 +6,7 @@ import {useNavigation} from "@react-navigation/native";
 import {useDispatch} from "react-redux";
 import {getToken, setToken} from "../../../store/loginSlice";
 import {authApi, columnApi} from "../../../api/api";
+import {useEffect} from "react";
 // import Constants from 'expo-constants';
 
 
@@ -23,12 +24,11 @@ export const SignUpScreen = () => {
     });
 
 
-    dispatch(getToken('eda','dafds','asdfas'))
+    // dispatch(getToken('312ddvasghryaPupdfskin@gmail.com','1ddVasfdhgfyasdfgPypkin','1dddfghdfganypasdfgword'))
 
 
     const onSubmit = data => {
-        console.log(data);
-        // dispatch(getToken(data.Email,data.Name,data.Password))
+        // console.log(data);
     };
 
     const onChange = arg => {

@@ -1,13 +1,14 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
-import loginReducer, {getTokenWorkerSaga} from "./loginSlice";
+import loginReducer, {getToken, getTokenWorkerSaga} from "./loginSlice";
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery} from 'redux-saga/effects'
-
+import {takeEvery} from 'redux-saga/effects'
+import columnSlice from "./columnSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
     login: loginReducer,
+    column: columnSlice,
 })
 
 
@@ -23,5 +24,5 @@ function* rootWatcher() {
 
 sagaMiddleware.run(rootWatcher)
 
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof rootReducer>
 export type AppDispatch = typeof store.dispatch

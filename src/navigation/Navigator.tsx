@@ -15,14 +15,14 @@ const Stack = createNativeStackNavigator();
 
 export const Navigator = () => {
 
-    const Token = useSelector<RootState>(state => state.login.Token)
+    const token = useSelector<RootState>(state => state.login.token)
 
     return (
 
         <NavigationContainer>
 
             <Stack.Navigator>
-                {!Token ? (
+                {!token ? (
                     <>
                         <Stack.Screen name={Routes.SignUpScreen} component={SignUpScreen} options={{headerShown: false}}/>
                         <Stack.Screen name={Routes.SignInScreen} component={SignInScreen} options={{headerShown: false}}/>

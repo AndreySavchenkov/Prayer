@@ -11,17 +11,17 @@ export const authApi = {
 }
 
 //---------------------------UserApi----------------------------------------------------------------------------------
-
-const Token = useSelector<RootState>(state => state.login.Token)
+//nothing hooks - neef fix!!!!!!!!!!!!!!!!!!!
+// const token = useSelector<RootState>(state => state.login.token)
 
 const instance = axios.create({
     baseURL: 'https://prayer.herokuapp.com',
     timeout: 5000,
-    headers: {'Authorization': `Bearer ${Token}`}
+    // headers: {'Authorization': `Bearer ${token}`}
 });
 
 export const columnApi = {
-    getColumns() {
+    getPrayers() {
         return instance.post('/column')
     }
 }

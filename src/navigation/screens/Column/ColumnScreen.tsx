@@ -5,8 +5,19 @@ import {Input} from "./Input";
 import {PrayerList} from "./PrayerList";
 import {Button} from "./Button";
 import {PrayerListDone} from "./PrayerListDone";
+import {FC} from "react";
 
-export const ColumnScreen = () => {
+
+type Props = {
+   route: any
+}
+
+export const ColumnScreen:FC<Props> = ({route}) => {
+console.log(route)
+
+    const columnId = route.params.columnId;
+    console.log('columnId->', columnId)
+
     return (
         <View>
             <ColumnHeader/>

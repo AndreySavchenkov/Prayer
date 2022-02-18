@@ -46,7 +46,7 @@ export function* getTokenWorkerSaga(action: ReturnType<typeof getToken>) {
             password: res.data.password,
             token: res.data.token
         }));
-        yield put(getColumn({columns: res.data.columns}));
+        // yield put(getColumn({columns: res.data.columns}));
     }
 }
 export const getToken = (email: string, name: string, password: string) => ({

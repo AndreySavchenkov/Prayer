@@ -17,11 +17,20 @@ export const authApi = {
 const instance = axios.create({
     baseURL: 'https://prayer.herokuapp.com',
     timeout: 5000,
-    // headers: {'Authorization': `Bearer ${token}`}
+    headers: {'Authorization': `Bearer c5d7b17681772419da162c1fd3e57ae3871a147449fd78e62d452e34c8974ed5`}
 });
 
 export const columnApi = {
-    getPrayers() {
-        return instance.post('/column')
+    getColumns() {
+        return instance.get('/columns')
+    },
+    getColumn(columnId){
+        return instance.get(`/columns/${columnId}`)
+    }
+}
+
+export const prayersApi = {
+    getPrayers(){
+        return instance.get(`/prayers`)
     }
 }

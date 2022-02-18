@@ -6,7 +6,10 @@ import {PrayerStatistics} from "./PrayerStatistics";
 import {PrayerMembers} from "./PrayerMembers";
 import {PrayerComments} from "./PrayerComments";
 
-export const PrayerScreen = () => {
+export const PrayerScreen = ({route}) => {
+
+
+
     return (
         <View>
             <PrayerHeader/>

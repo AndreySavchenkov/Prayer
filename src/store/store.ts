@@ -2,13 +2,15 @@ import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import loginReducer, {getToken, getTokenWorkerSaga} from "./loginSlice";
 import createSagaMiddleware from 'redux-saga';
 import {takeEvery} from 'redux-saga/effects'
-import columnSlice from "./columnSlice";
+import columnSlice, {getColumnsWorkerSaga} from "./columnSlice";
+import prayersSlice, {getPrayersWorkerSaga} from "./prayersSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
     login: loginReducer,
     column: columnSlice,
+    prayer: prayersSlice,
 })
 
 
@@ -19,7 +21,9 @@ export const store = configureStore({
 })
 
 function* rootWatcher() {
-    yield takeEvery('SAGA/GET_TOKEN', getTokenWorkerSaga)
+    yield takeEvery('SAGA/GET_TOKEN', getTokenWorkerSaga);
+    yield takeEvery('SAGA/GET_COLUMNS', getColumnsWorkerSaga);
+    yield takeEvery('SAGA/GET_PRAYERS', getPrayersWorkerSaga);
 }
 
 sagaMiddleware.run(rootWatcher)

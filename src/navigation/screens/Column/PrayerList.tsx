@@ -6,10 +6,16 @@ import {IconSvgMainUser} from "../../../components/icons/IconSvgMainUser";
 import {IconSvgPrayerLine} from "../../../components/icons/IconSvgPrayerLine";
 import {useNavigation} from "@react-navigation/native";
 import {Routes} from "../../routes";
+import {FC} from "react";
+import {IconSvgCheckBoxOn} from "../../../components/icons/IconSvgCheckBoxOn";
 
+type Props = {
+    title: string
+    checked: boolean
+    description: string
+}
 
-
-export const PrayerList = () => {
+export const PrayerList:FC<Props> = ({title,checked, description}) => {
 
   const navigation = useNavigation()
 
@@ -17,13 +23,15 @@ export const PrayerList = () => {
         <View style={styles.listContainer}>
             <View style={styles.leftContainer}>
                 <View style={styles.line}>
-                    <IconSvgStateLine/>
+                    <IconSvgStateLine color={'#72A8BC'}/>
                 </View>
                 <View style={styles.checkBox}>
-                    <IconSvgCheckBoxOff/>
+                    {checked ?
+                        <IconSvgCheckBoxOff/> : <IconSvgCheckBoxOn/>
+                }
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate(Routes.PrayerScreen)}>
-                    <Text style={styles.textComment}>Prayer item two...</Text>
+                <TouchableOpacity onPress={() => navigation.navigate(Routes.PrayerScreen, {title,checked,description})}>
+                    <Text style={styles.text}>{title}</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.rightContainer}>
@@ -53,10 +61,11 @@ const styles = StyleSheet.create({
     checkBox: {
         marginRight: 15,
     },
-    textComment: {
+    text: {
         fontSize: 17,
         lineHeight: 20,
         color: '#40435B',
+
     },
     leftContainer: {
         flexDirection: 'row',

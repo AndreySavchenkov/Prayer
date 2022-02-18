@@ -5,18 +5,25 @@ import {IconSvgCheckBoxOff} from "../../../components/icons/IconSvgCheckBoxOff";
 import {IconSvgMainUser} from "../../../components/icons/IconSvgMainUser";
 import {IconSvgPrayerLine} from "../../../components/icons/IconSvgPrayerLine";
 import {IconSvgCheckBoxOn} from "../../../components/icons/IconSvgCheckBoxOn";
+import {FC} from "react";
 
-export const PrayerListDone = () => {
+type Props = {
+    title: string
+    checked: boolean
+    description: string
+}
+
+export const PrayerListDone:FC<Props> = ({title,checked,description}) => {
     return (
         <View style={styles.listContainer}>
             <View style={styles.leftContainer}>
                 <View style={styles.line}>
-                    <IconSvgStateLine/>
+                    <IconSvgStateLine color={'#72A8BC'}/>
                 </View>
                 <View style={styles.checkBox}>
                     <IconSvgCheckBoxOn/>
                 </View>
-                <Text style={styles.textComment}>Prayer item two...</Text>
+                <Text style={styles.text}>{title}</Text>
             </View>
             <View style={styles.rightContainer}>
                 <IconSvgMainUser/>
@@ -45,7 +52,7 @@ const styles = StyleSheet.create({
     checkBox: {
         marginRight: 15,
     },
-    textComment: {
+    text: {
         fontSize: 17,
         lineHeight: 20,
         color: '#40435B',

@@ -4,11 +4,12 @@ import {FC} from "react";
 
 type Props = {
     text: string
+    pressHandler: () => void
 }
 
-export const Button: FC<Props> = ({text}) => {
+export const Button: FC<Props> = ({text, pressHandler}) => {
     return (
-        <TouchableOpacity  style={styles.buttonContainer}>
+        <TouchableOpacity  style={styles.buttonContainer} onPress={pressHandler}>
             <Text style={styles.buttonText}>{text}</Text>
         </TouchableOpacity>
     )

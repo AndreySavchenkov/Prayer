@@ -11,9 +11,10 @@ type Props = {
     title: string
     checked: boolean
     description: string
+    prayerId: number
 }
 
-export const PrayerListDone:FC<Props> = ({title,checked,description}) => {
+export const PrayerListDone:FC<Props> = ({title,checked,description,prayerId}) => {
     return (
         <View style={styles.listContainer}>
             <View style={styles.leftContainer}>

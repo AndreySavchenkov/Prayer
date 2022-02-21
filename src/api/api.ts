@@ -11,7 +11,7 @@ export const authApi = {
 }
 
 //---------------------------UserApi----------------------------------------------------------------------------------
-//nothing hooks - neef fix!!!!!!!!!!!!!!!!!!!
+//nothing hooks - need fix!!!!!!!!!!!!!!!!!!!
 // const token = useSelector<RootState>(state => state.login.token)
 
 const instance = axios.create({
@@ -32,5 +32,11 @@ export const columnApi = {
 export const prayersApi = {
     getPrayers(){
         return instance.get(`/prayers`)
+    },
+    addPrayer(columnId: number, title: string, description: string, checked: boolean) {
+        return instance.post(`/columns/${columnId}/prayers`, {title, description, checked})
+    },
+    toggleChechedPrayer(prayerId: number, checked: boolean){
+        return instance.put(`/prayers/${prayerId}`, {checked})
     }
 }

@@ -33,12 +33,6 @@ const prayerSlice = createSlice({
         addPrayer(state, action: PayloadAction<{ prayer: Prayer }>) {
             state.prayers.push(action.payload.prayer)
         },
-        checkedPrayer(state,action: PayloadAction<{id}>){
-          const findPrayer: Prayer = state.prayers.find(item=>item.id === action.payload.id)
-            if(findPrayer){
-                findPrayer.checked = false;
-            }
-        }
     },
 })
 
@@ -70,11 +64,20 @@ export function* addPrayerWorkerSaga(action: ReturnType<typeof addPrayerAction>)
 export const addPrayerAction = (columnId: number, title: string) => ({type: 'SAGA/ADD_PRAYER', columnId, title})
 
 export function* checkedPrayerWorkerSaga(action: ReturnType<typeof checkedPrayerAction>) {
-    const res = yield call(prayersApi.toggleChechedPrayer, action.prayerId, false);
-    console.log(res);
-    yield put(checkedPrayer(res.data.id));
+    yield call(prayersApi.toggleChechedPrayer, action.prayerId, false);
+    const res = yield call(prayersApi.getPrayers)
+    console.log(res)
+    yield put(getPrayer({prayers: res.data}));
 }
 export const checkedPrayerAction = (prayerId: number) => ({type: 'SAGA/CHECKED_PRAYER', prayerId});
 
-export const {getPrayer, addPrayer,checkedPrayer} = prayerSlice.actions
+export function* unCheckedPrayerWorkerSaga(action: ReturnType<typeof unCheckedPrayerAction>) {
+    yield call(prayersApi.toggleChechedPrayer, action.prayerId, true);
+    const res = yield call(prayersApi.getPrayers)
+    console.log(res)
+    yield put(getPrayer({prayers: res.data}));
+}
+export const unCheckedPrayerAction = (prayerId: number) => ({type: 'SAGA/UNCHECKED_PRAYER', prayerId});
+
+export const {getPrayer, addPrayer} = prayerSlice.actions
 export default prayerSlice.reducer

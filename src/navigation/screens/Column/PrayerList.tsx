@@ -9,7 +9,8 @@ import {Routes} from "../../routes";
 import {FC} from "react";
 import {IconSvgCheckBoxOn} from "../../../components/icons/IconSvgCheckBoxOn";
 import {useDispatch} from "react-redux";
-import {checkedPrayerAction} from "../../../store/prayersSlice";
+import {checkedPrayerAction, unCheckedPrayerAction} from "../../../store/prayersSlice";
+import {SwipeRow} from "react-native-swipe-list-view";
 
 type Props = {
     title: string
@@ -18,45 +19,72 @@ type Props = {
     prayerId: number
 }
 
-export const PrayerList:FC<Props> = ({title,checked, description,prayerId}) => {
+export const PrayerList: FC<Props> = ({title, checked, description, prayerId}) => {
 
-  const navigation = useNavigation()
-    const dispatch = useDispatch()
+    const navigation = useNavigation();
+    const dispatch = useDispatch();
 
-    const pressHandler = () => {
-      dispatch(checkedPrayerAction(prayerId))
-    }
+    const checkedHandler = () => dispatch(checkedPrayerAction(prayerId))
+    const unCheckedHandler = () => dispatch(unCheckedPrayerAction(prayerId))
+
 
     return (
-        <View style={styles.listContainer}>
-            <View style={styles.leftContainer}>
-                <View style={styles.line}>
-                    <IconSvgStateLine color={'#72A8BC'}/>
-                </View>
-                <TouchableOpacity onPress={pressHandler}>
-                    <View style={styles.checkBox}>
-                        {checked ?
-                            <IconSvgCheckBoxOff/> : <IconSvgCheckBoxOn/>
-                        }
+        <SwipeRow rightOpenValue={-80}>
+            <TouchableOpacity style={styles.deleteButton}>
+                <Text style={styles.deleteText}>Delete</Text>
+            </TouchableOpacity>
+            <View style={styles.listContainer}>
+                <View style={styles.leftContainer}>
+                    <View style={styles.line}>
+                        <IconSvgStateLine color={'#72A8BC'}/>
                     </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate(Routes.PrayerScreen, {title,checked,description})}>
-                    <Text style={styles.text}>{title}</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.rightContainer}>
-                <IconSvgMainUser/>
-                <Text style={styles.number}>3</Text>
-                <View style={styles.prayerLine}>
-                    <IconSvgPrayerLine/>
+                    <TouchableOpacity>
+                        <View style={styles.checkBox}>
+                            {checked ?
+                                <TouchableOpacity onPress={checkedHandler}>
+                                    <IconSvgCheckBoxOff/>
+                                </TouchableOpacity>
+                                :
+                                <TouchableOpacity onPress={unCheckedHandler}>
+                                    <IconSvgCheckBoxOn/>
+                                </TouchableOpacity>
+                            }
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate(Routes.PrayerScreen, {title, checked, description})}>
+                        <Text style={checked ? styles.text : styles.textChecked}>{title}</Text>
+                    </TouchableOpacity>
                 </View>
-                <Text style={styles.number}>123</Text>
+                <View style={styles.rightContainer}>
+                    <IconSvgMainUser/>
+                    <Text style={styles.number}>3</Text>
+                    <View style={styles.prayerLine}>
+                        <IconSvgPrayerLine/>
+                    </View>
+                    <Text style={styles.number}>123</Text>
+                </View>
             </View>
-        </View>
+        </SwipeRow>
     )
 }
 
 const styles = StyleSheet.create({
+    deleteButton: {
+        backgroundColor: '#AC5253',
+        width: 80,
+        height: 68,
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    deleteText: {
+        fontSize: 13,
+        lineHeight: 15,
+        color: '#FFFFFF'
+    },
     listContainer: {
         flexDirection: 'row',
         justifyContent: "space-between",
@@ -64,6 +92,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 9,
         borderBottomWidth: 1,
         borderColor: '#E8E9ED',
+        backgroundColor: '#E5E5E5',
     },
     line: {
         marginRight: 15,
@@ -75,7 +104,12 @@ const styles = StyleSheet.create({
         fontSize: 17,
         lineHeight: 20,
         color: '#40435B',
-
+    },
+    textChecked: {
+        fontSize: 17,
+        lineHeight: 20,
+        color: '#40435B',
+        textDecorationLine: 'line-through',
     },
     leftContainer: {
         flexDirection: 'row',

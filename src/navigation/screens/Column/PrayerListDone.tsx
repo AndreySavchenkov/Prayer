@@ -1,7 +1,6 @@
 import * as React from "react";
 import {View, StyleSheet, Text} from "react-native";
 import {IconSvgStateLine} from "../../../components/icons/IconSvgStateLine";
-import {IconSvgCheckBoxOff} from "../../../components/icons/IconSvgCheckBoxOff";
 import {IconSvgMainUser} from "../../../components/icons/IconSvgMainUser";
 import {IconSvgPrayerLine} from "../../../components/icons/IconSvgPrayerLine";
 import {IconSvgCheckBoxOn} from "../../../components/icons/IconSvgCheckBoxOn";

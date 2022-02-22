@@ -3,7 +3,12 @@ import loginReducer, {getToken, getTokenWorkerSaga} from "./loginSlice";
 import createSagaMiddleware from 'redux-saga';
 import {takeEvery} from 'redux-saga/effects'
 import columnSlice, {getColumnsWorkerSaga} from "./columnSlice";
-import prayersSlice, {addPrayerWorkerSaga, getPrayersWorkerSaga, checkedPrayerWorkerSaga} from "./prayersSlice";
+import prayersSlice, {
+    addPrayerWorkerSaga,
+    getPrayersWorkerSaga,
+    checkedPrayerWorkerSaga,
+    unCheckedPrayerWorkerSaga
+} from "./prayersSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -26,6 +31,7 @@ function* rootWatcher() {
     yield takeEvery('SAGA/GET_PRAYERS', getPrayersWorkerSaga);
     yield takeEvery('SAGA/ADD_PRAYER', addPrayerWorkerSaga);
     yield takeEvery('SAGA/CHECKED_PRAYER', checkedPrayerWorkerSaga);
+    yield takeEvery('SAGA/UNCHECKED_PRAYER', unCheckedPrayerWorkerSaga);
 }
 
 sagaMiddleware.run(rootWatcher)

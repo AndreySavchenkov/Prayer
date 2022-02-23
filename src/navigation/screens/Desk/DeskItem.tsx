@@ -3,9 +3,9 @@ import {View, StyleSheet, Text,TouchableOpacity} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {Routes} from "../../routes";
 import {FC} from "react";
-
-
-
+import {IconSvgTrash} from "../../../components/icons/IconSvgTrash";
+import {useDispatch} from "react-redux";
+import {deleteColumn} from "../../../store/columnSlice";
 
 
 type Props = {
@@ -15,8 +15,11 @@ type Props = {
 export const DeskItem:FC<Props> = ({text, columnId}) => {
 
 const navigation = useNavigation();
+const dispatch = useDispatch();
 
-
+const pressHandler = () => {
+    dispatch(deleteColumn({columnId}))
+}
 
 console.log('columnId in deskItem=>', columnId)
 
@@ -24,14 +27,19 @@ console.log('columnId in deskItem=>', columnId)
         <TouchableOpacity onPress={() => navigation.navigate(Routes.ColumnScreen, {columnId})}>
             <View style={styles.container}>
                 <Text style={styles.text}>{text}</Text>
+                <TouchableOpacity onPress={pressHandler}>
+                    <IconSvgTrash/>
+                </TouchableOpacity>
             </View>
         </TouchableOpacity>
-
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         marginHorizontal: 15,
         marginTop: 10,
         paddingVertical: 20,

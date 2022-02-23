@@ -16,12 +16,7 @@ type InitialState = {
 }
 
 const initialState = {
-    columns: [
-        // {title: 'BACKLOG', description: null, id: 3511},
-        // {title: 'TODO', description: null, id: 3512},
-        // {title: 'IN PROGRESS', description: null, id: 3513},
-        // {title: 'DONE', description: null, id: 3514}
-    ]
+    columns: []
 } as InitialState
 
 const columnSlice = createSlice({
@@ -31,6 +26,12 @@ const columnSlice = createSlice({
         getColumn(state, action: PayloadAction<{ columns: Columns }>) {
             state.columns = action.payload.columns
         },
+        addColumn(state, action: PayloadAction<{ column: Column }>){
+            state.columns.push(action.payload.column)
+        },
+        deleteColumn(state,action: PayloadAction<{columnId: number}>){
+            state.columns = state.columns.filter(item => item.id !== action.payload.columnId)
+        }
     },
 })
 
@@ -44,5 +45,24 @@ export function* getColumnsWorkerSaga(action: ReturnType<typeof getColumnsAction
 }
 export const getColumnsAction = () => ({type: 'SAGA/GET_COLUMNS'})
 
-export const {getColumn} = columnSlice.actions
+export function* addColumnWorkerSaga(action: ReturnType<typeof addColumnAction>){
+    const res = yield call(columnApi.addColumn, action.title, "",0);
+    console.log(res)
+    yield put(addColumn({
+        column:{
+         id: res.data.id,
+         description: res.data.description,
+         title: res.data.title
+        }
+    }))
+}
+export const addColumnAction = (title: string) => ({type: 'SAGA/ADD_COLUMN', title})
+
+export function* deleteColumnWorkerSaga(action: ReturnType<typeof deleteColumnAction>){
+    const res = yield call(columnApi.deleteColumn, action.columnId)
+    yield put(deleteColumn(res.data.columnId))
+}
+export const deleteColumnAction =(columnId: string) => ({type: 'SAGA/DELETE_COLUMN', columnId})
+
+export const {getColumn, addColumn,deleteColumn} = columnSlice.actions
 export default columnSlice.reducer

@@ -1,15 +1,24 @@
 import * as React from "react";
-import {ScrollView, StyleSheet, View, Text} from "react-native";
+import {StyleSheet, View, Text, TouchableOpacity} from "react-native";
 import Svg, {G, Mask, Path} from "react-native-svg";
+import {useState} from "react";
+import {ModalAddColumn} from "./ModalAddColumn";
 
 export const DeskHeader = () => {
+    const [isShow, setIsShow] = useState(false);
+
+    const showModal = () => {
+        setIsShow(!isShow)
+    }
+
     return (
-            <View>
-                <View style={styles.header}>
-                    <Text style={styles.headerTitle}>My Desk</Text>
-                </View>
-                <View style={styles.iconAdd}>
-                    <Svg width={22} height={22} fill="none" xmlns="http://www.w3.org/2000/svg">
+        <View>
+            <View style={styles.header}>
+                <Text style={styles.headerTitle}>My Desk</Text>
+            </View>
+            <View style={styles.iconAdd}>
+                <TouchableOpacity onPress={showModal}>
+                    <Svg width={22} height={22} fill="#72A8BC" xmlns="http://www.w3.org/2000/svg">
                         <Mask
                             id="a"
                             style={{
@@ -23,15 +32,17 @@ export const DeskHeader = () => {
                         >
                             <Path
                                 d="M10 21a1 1 0 1 0 2 0v-9h9a1 1 0 1 0 0-2h-9V1a1 1 0 1 0-2 0v9H1a1 1 0 1 0 0 2h9v9Z"
-                                fill="#A369EC"
+                                fill="#72A8BC"
                             />
                         </Mask>
                         <G mask="url(#a)">
-                            <Path fill="#A369EC" d="M-1-1h24v24H-1z"/>
+                            <Path fill="#72A8BC" d="M-1-1h24v24H-1z"/>
                         </G>
                     </Svg>
-                </View>
+                </TouchableOpacity>
             </View>
+            {isShow ? <ModalAddColumn isShow={isShow} setIsShow={setIsShow}/> : null}
+        </View>
     )
 }
 

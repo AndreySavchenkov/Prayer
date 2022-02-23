@@ -5,7 +5,7 @@ import {RootState} from "../store/store";
 
 //---------------------------AuthApi-----------------------------------------------------------------------------------
 export const authApi = {
-    signUp(email: string, name: string, password: string, ) {
+    signUp(email: string, name: string, password: string,) {
         return axios.post('https://prayer.herokuapp.com/auth/sign-up/', {email, name, password,})
     }
 }
@@ -24,22 +24,28 @@ export const columnApi = {
     getColumns() {
         return instance.get('/columns')
     },
-    getColumn(columnId){
+    getColumn(columnId) {
         return instance.get(`/columns/${columnId}`)
+    },
+    addColumn(title: string, description: string, prayerId: number) {
+        return instance.post('/columns', {title, description, prayerId})
+    },
+    deleteColumn(columnId){
+        return instance.delete(`/columns/${columnId}`)
     }
 }
 
 export const prayersApi = {
-    getPrayers(){
+    getPrayers() {
         return instance.get(`/prayers`)
     },
     addPrayer(columnId: number, title: string, description: string, checked: boolean) {
         return instance.post(`/columns/${columnId}/prayers`, {title, description, checked})
     },
-    toggleCheckedPrayer(prayerId: number, checked: boolean){
+    toggleCheckedPrayer(prayerId: number, checked: boolean) {
         return instance.put(`/prayers/${prayerId}`, {checked})
     },
-    deletePrayer(prayerId: number){
+    deletePrayer(prayerId: number) {
         return instance.delete(`prayers/${prayerId}`)
     }
 }

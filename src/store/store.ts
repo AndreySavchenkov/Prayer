@@ -2,7 +2,7 @@ import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import loginReducer, {getToken, getTokenWorkerSaga} from "./loginSlice";
 import createSagaMiddleware from 'redux-saga';
 import {takeEvery} from 'redux-saga/effects'
-import columnSlice, {getColumnsWorkerSaga} from "./columnSlice";
+import columnSlice, {addColumnWorkerSaga, deleteColumnWorkerSaga, getColumnsWorkerSaga} from "./columnSlice";
 import prayersSlice, {
     addPrayerWorkerSaga,
     getPrayersWorkerSaga,
@@ -33,6 +33,8 @@ function* rootWatcher() {
     yield takeEvery('SAGA/CHECKED_PRAYER', checkedPrayerWorkerSaga);
     yield takeEvery('SAGA/UNCHECKED_PRAYER', unCheckedPrayerWorkerSaga);
     yield takeEvery('SAGA/DELETE_PRAYER', deletePrayerWorkerSaga);
+    yield takeEvery('SAGA/ADD_COLUMN', addColumnWorkerSaga);
+    yield takeEvery('SAGA/DELETE_COLUMN', deleteColumnWorkerSaga);
 }
 
 sagaMiddleware.run(rootWatcher)

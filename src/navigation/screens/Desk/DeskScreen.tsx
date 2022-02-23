@@ -15,20 +15,12 @@ export const DeskScreen = () => {
 
 useEffect(()=>{ dispatch(getColumnsAction()); dispatch(getPrayersAction())}, [dispatch])
 
-    // console.log('action => ', getColumnsAction())
-
 
 
     return (
         <ScrollView style={styles.container}>
             <DeskHeader/>
-
-            {columns ? columns.map(item => <DeskItem key={item.id} columnId={item.id} text={item.title}/>)
-
-                // <DeskItem text={'To Do'}/>
-                // <DeskItem text={'In Progress'}/>
-                // <DeskItem text={'Completed'}/>
-          : null}
+            {columns ? columns.map(item => <DeskItem key={item.id} columnId={item.id} text={item.title}/>) : null}
         </ScrollView>
     )
 }

@@ -33,6 +33,9 @@ const prayerSlice = createSlice({
         addPrayer(state, action: PayloadAction<{ prayer: Prayer }>) {
             state.prayers.push(action.payload.prayer)
         },
+        deletePrayer(state,action: PayloadAction<{prayerId: number}>){
+            state.prayers = state.prayers.filter(item => item.id !== action.payload.prayerId)
+        }
     },
 })
 
@@ -64,7 +67,7 @@ export function* addPrayerWorkerSaga(action: ReturnType<typeof addPrayerAction>)
 export const addPrayerAction = (columnId: number, title: string) => ({type: 'SAGA/ADD_PRAYER', columnId, title})
 
 export function* checkedPrayerWorkerSaga(action: ReturnType<typeof checkedPrayerAction>) {
-    yield call(prayersApi.toggleChechedPrayer, action.prayerId, false);
+    yield call(prayersApi.toggleCheckedPrayer, action.prayerId, false);
     const res = yield call(prayersApi.getPrayers)
     console.log(res)
     yield put(getPrayer({prayers: res.data}));
@@ -72,12 +75,18 @@ export function* checkedPrayerWorkerSaga(action: ReturnType<typeof checkedPrayer
 export const checkedPrayerAction = (prayerId: number) => ({type: 'SAGA/CHECKED_PRAYER', prayerId});
 
 export function* unCheckedPrayerWorkerSaga(action: ReturnType<typeof unCheckedPrayerAction>) {
-    yield call(prayersApi.toggleChechedPrayer, action.prayerId, true);
+    yield call(prayersApi.toggleCheckedPrayer, action.prayerId, true);
     const res = yield call(prayersApi.getPrayers)
     console.log(res)
     yield put(getPrayer({prayers: res.data}));
 }
 export const unCheckedPrayerAction = (prayerId: number) => ({type: 'SAGA/UNCHECKED_PRAYER', prayerId});
 
-export const {getPrayer, addPrayer} = prayerSlice.actions
+export function* deletePrayerWorkerSaga(action: ReturnType<typeof deletePrayerAction>) {
+    yield call(prayersApi.deletePrayer, action.prayerId);
+    yield put(deletePrayer({prayerId: action.prayerId}))
+}
+export const deletePrayerAction = (prayerId: number) => ({type: 'SAGA/DELETE_PRAYER', prayerId});
+
+export const {getPrayer, addPrayer, deletePrayer} = prayerSlice.actions
 export default prayerSlice.reducer

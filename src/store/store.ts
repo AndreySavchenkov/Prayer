@@ -7,7 +7,7 @@ import prayersSlice, {
     addPrayerWorkerSaga,
     getPrayersWorkerSaga,
     checkedPrayerWorkerSaga,
-    unCheckedPrayerWorkerSaga
+    unCheckedPrayerWorkerSaga, deletePrayerWorkerSaga
 } from "./prayersSlice";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -32,6 +32,7 @@ function* rootWatcher() {
     yield takeEvery('SAGA/ADD_PRAYER', addPrayerWorkerSaga);
     yield takeEvery('SAGA/CHECKED_PRAYER', checkedPrayerWorkerSaga);
     yield takeEvery('SAGA/UNCHECKED_PRAYER', unCheckedPrayerWorkerSaga);
+    yield takeEvery('SAGA/DELETE_PRAYER', deletePrayerWorkerSaga);
 }
 
 sagaMiddleware.run(rootWatcher)

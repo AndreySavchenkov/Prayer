@@ -6,10 +6,10 @@ import {IconSvgMainUser} from "../../../components/icons/IconSvgMainUser";
 import {IconSvgPrayerLine} from "../../../components/icons/IconSvgPrayerLine";
 import {useNavigation} from "@react-navigation/native";
 import {Routes} from "../../routes";
-import {FC} from "react";
+import {FC, useEffect} from "react";
 import {IconSvgCheckBoxOn} from "../../../components/icons/IconSvgCheckBoxOn";
 import {useDispatch} from "react-redux";
-import {checkedPrayerAction, unCheckedPrayerAction} from "../../../store/prayersSlice";
+import {checkedPrayerAction, deletePrayerAction, unCheckedPrayerAction} from "../../../store/prayersSlice";
 import {SwipeRow} from "react-native-swipe-list-view";
 
 type Props = {
@@ -24,13 +24,15 @@ export const PrayerList: FC<Props> = ({title, checked, description, prayerId}) =
     const navigation = useNavigation();
     const dispatch = useDispatch();
 
-    const checkedHandler = () => dispatch(checkedPrayerAction(prayerId))
-    const unCheckedHandler = () => dispatch(unCheckedPrayerAction(prayerId))
+        const checkedHandler = () => dispatch(checkedPrayerAction(prayerId))
+        const unCheckedHandler = () => dispatch(unCheckedPrayerAction(prayerId))
+        const deleteHandler = () => dispatch(deletePrayerAction(prayerId))
+
 
 
     return (
         <SwipeRow rightOpenValue={-80}>
-            <TouchableOpacity style={styles.deleteButton}>
+            <TouchableOpacity style={styles.deleteButton} onPress={deleteHandler}>
                 <Text style={styles.deleteText}>Delete</Text>
             </TouchableOpacity>
             <View style={styles.listContainer}>

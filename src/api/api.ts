@@ -36,7 +36,10 @@ export const prayersApi = {
     addPrayer(columnId: number, title: string, description: string, checked: boolean) {
         return instance.post(`/columns/${columnId}/prayers`, {title, description, checked})
     },
-    toggleChechedPrayer(prayerId: number, checked: boolean){
+    toggleCheckedPrayer(prayerId: number, checked: boolean){
         return instance.put(`/prayers/${prayerId}`, {checked})
+    },
+    deletePrayer(prayerId: number){
+        return instance.delete(`prayers/${prayerId}`)
     }
 }

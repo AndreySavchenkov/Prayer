@@ -1,8 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {call, put} from "redux-saga/effects";
-import {authApi, columnApi, prayersApi} from "../api/api";
-import {setToken} from "./loginSlice";
-import {getColumn} from "./columnSlice";
+import {prayersApi} from "../api/api";
 
 
 type Prayer = {
@@ -39,8 +37,7 @@ const prayerSlice = createSlice({
     },
 })
 
-
-//-----------------------------------------Sagas-----------------------------------------------------------------------
+//-----------------------------------------Sagas----------------------------------------------------------------------//
 
 export function* getPrayersWorkerSaga(action: ReturnType<typeof getPrayersAction>) {
     const res = yield call(prayersApi.getPrayers)
@@ -48,7 +45,6 @@ export function* getPrayersWorkerSaga(action: ReturnType<typeof getPrayersAction
     yield put(getPrayer({prayers: res.data}));
 }
 export const getPrayersAction = () => ({type: 'SAGA/GET_PRAYERS'})
-
 
 export function* addPrayerWorkerSaga(action: ReturnType<typeof addPrayerAction>) {
     const res = yield call(prayersApi.addPrayer, action.columnId, action.title, "", true)

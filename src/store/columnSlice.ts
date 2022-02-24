@@ -1,15 +1,14 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {call, put} from "redux-saga/effects";
-import {authApi, columnApi} from "../api/api";
-import {setToken} from "./loginSlice";
+import {columnApi} from "../api/api";
 
 
-type Column = {
+export type Column = {
     title: string | null,
     description: string | null,
     id: number | null
 }
-type Columns = Column[]
+export type Columns = Column[]
 
 type InitialState = {
     columns: Columns
@@ -20,7 +19,7 @@ const initialState = {
 } as InitialState
 
 const columnSlice = createSlice({
-    name: 'login',
+    name: 'column',
     initialState,
     reducers: {
         getColumn(state, action: PayloadAction<{ columns: Columns }>) {
@@ -35,12 +34,11 @@ const columnSlice = createSlice({
     },
 })
 
-
-//-----------------------------------------Sagas-----------------------------------------------------------------------
+//-----------------------------------------Sagas----------------------------------------------------------------------//
 
 export function* getColumnsWorkerSaga(action: ReturnType<typeof getColumnsAction>) {
     const res = yield call(columnApi.getColumns)
-    console.log(res)
+    console.log('get columns ->', res)
     yield put(getColumn({columns: res.data}));
 }
 export const getColumnsAction = () => ({type: 'SAGA/GET_COLUMNS'})
@@ -59,10 +57,9 @@ export function* addColumnWorkerSaga(action: ReturnType<typeof addColumnAction>)
 export const addColumnAction = (title: string) => ({type: 'SAGA/ADD_COLUMN', title})
 
 export function* deleteColumnWorkerSaga(action: ReturnType<typeof deleteColumnAction>){
-    const res = yield call(columnApi.deleteColumn, action.columnId)
-    yield put(deleteColumn(res.data.columnId))
+   yield call(columnApi.deleteColumn, action.columnId)
 }
-export const deleteColumnAction =(columnId: string) => ({type: 'SAGA/DELETE_COLUMN', columnId})
+export const deleteColumnAction =(columnId: number) => ({type: 'SAGA/DELETE_COLUMN', columnId})
 
 export const {getColumn, addColumn,deleteColumn} = columnSlice.actions
 export default columnSlice.reducer

@@ -21,14 +21,12 @@ type Props = {
 
 export const PrayerList: FC<Props> = ({title, checked, description, prayerId}) => {
 
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
     const dispatch = useDispatch();
 
-        const checkedHandler = () => dispatch(checkedPrayerAction(prayerId))
-        const unCheckedHandler = () => dispatch(unCheckedPrayerAction(prayerId))
-        const deleteHandler = () => dispatch(deletePrayerAction(prayerId))
-
-
+    const checkedHandler = () => dispatch(checkedPrayerAction(prayerId))
+    const unCheckedHandler = () => dispatch(unCheckedPrayerAction(prayerId))
+    const deleteHandler = () => dispatch(deletePrayerAction(prayerId))
 
     return (
         <SwipeRow rightOpenValue={-80}>

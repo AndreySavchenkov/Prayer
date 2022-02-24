@@ -10,12 +10,13 @@ import {getPrayersAction} from "../../../store/prayersSlice";
 
 export const DeskScreen = () => {
 
-    const columns = useSelector<RootState>(state => state.column.columns)
+    const columns = useSelector((state: RootState) => state.column.columns)
     const dispatch = useDispatch();
 
-useEffect(()=>{ dispatch(getColumnsAction()); dispatch(getPrayersAction())}, [dispatch])
-
-
+    useEffect(() => {
+        dispatch(getColumnsAction());
+        dispatch(getPrayersAction());
+    }, [])
 
     return (
         <ScrollView style={styles.container}>

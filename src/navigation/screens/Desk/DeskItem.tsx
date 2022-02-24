@@ -1,27 +1,26 @@
 import * as React from "react";
-import {View, StyleSheet, Text,TouchableOpacity} from "react-native";
+import {View, StyleSheet, Text, TouchableOpacity} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {Routes} from "../../routes";
 import {FC} from "react";
 import {IconSvgTrash} from "../../../components/icons/IconSvgTrash";
 import {useDispatch} from "react-redux";
-import {deleteColumn} from "../../../store/columnSlice";
+import {deleteColumn, deleteColumnAction} from "../../../store/columnSlice";
 
 
 type Props = {
     text: string,
     columnId: number,
 }
-export const DeskItem:FC<Props> = ({text, columnId}) => {
+export const DeskItem: FC<Props> = ({text, columnId}) => {
 
-const navigation = useNavigation();
-const dispatch = useDispatch();
+    const navigation = useNavigation<any>();
+    const dispatch = useDispatch();
 
-const pressHandler = () => {
-    dispatch(deleteColumn({columnId}))
-}
-
-console.log('columnId in deskItem=>', columnId)
+    const pressHandler = () => {
+        dispatch(deleteColumnAction(columnId))
+        dispatch(deleteColumn({columnId}))
+    }
 
     return (
         <TouchableOpacity onPress={() => navigation.navigate(Routes.ColumnScreen, {columnId})}>

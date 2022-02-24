@@ -26,13 +26,9 @@ export const ColumnHeader = () => {
             </View>
             <TouchableOpacity onPress={() => navigation.goBack()}>
                 <View style={styles.iconBack}>
-                    <Svg width={18} height={16} fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <Svg width={18} height={16} fill="none">
                         <Mask
                             id="a"
-                            style={{
-                                maskType: "alpha",
-                            }}
-                            maskUnits="userSpaceOnUse"
                             x={0}
                             y={0}
                             width={18}

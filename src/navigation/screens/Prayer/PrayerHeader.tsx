@@ -7,18 +7,15 @@ export const PrayerHeader = () => {
 
     const navigation = useNavigation();
 
+
     return (
         <View style={styles.container}>
             <View style={styles.iconContainer}>
-                <TouchableOpacity onPress={()=> navigation.goBack()}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
                     <View style={styles.iconBack}>
-                        <Svg width={18} height={16} fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <Svg width={18} height={16} fill="none">
                             <Mask
                                 id="a"
-                                style={{
-                                    maskType: "alpha",
-                                }}
-                                maskUnits="userSpaceOnUse"
                                 x={0}
                                 y={0}
                                 width={18}
@@ -37,15 +34,10 @@ export const PrayerHeader = () => {
                         </Svg>
                     </View>
                 </TouchableOpacity>
-
                 <View style={styles.iconPrayer}>
-                    <Svg width={29} height={23} fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <Svg width={29} height={23} fill="none">
                         <Mask
                             id="a"
-                            style={{
-                                maskType: "alpha",
-                            }}
-                            maskUnits="userSpaceOnUse"
                             x={0}
                             y={0}
                             width={29}
@@ -64,7 +56,9 @@ export const PrayerHeader = () => {
                     </Svg>
                 </View>
             </View>
-            <Text style={styles.text}>Prayer item two which is for my family to love God whole heartedly.</Text>
+            <Text style={styles.text}>
+                Prayer item two which is for my family to love God whole heartedly.
+            </Text>
         </View>
     )
 }

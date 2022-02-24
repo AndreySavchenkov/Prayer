@@ -1,14 +1,16 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, TextInput, Button, Alert} from 'react-native';
+import {Text, View, StyleSheet, TextInput, Button} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import {Routes} from "../../routes";
 import {useNavigation} from "@react-navigation/native";
-// import Constants from 'expo-constants';
-
+import {useDispatch} from "react-redux";
+import {signInAction} from "../../../store/loginSlice";
+import {getColumnsAction} from "../../../store/columnSlice";
 
 export const SignInScreen = () => {
 
-    const navigation = useNavigation();
+    const dispatch = useDispatch();
+    const navigation = useNavigation<any>();
 
     const {register, setValue, handleSubmit, control, reset, formState: {errors}} = useForm({
         defaultValues: {
@@ -16,8 +18,9 @@ export const SignInScreen = () => {
             Password: ''
         }
     });
+
     const onSubmit = data => {
-        console.log(data);
+        dispatch(signInAction(data.Email,data.Password))
     };
 
     const onChange = arg => {
@@ -25,8 +28,6 @@ export const SignInScreen = () => {
             value: arg.nativeEvent.text,
         };
     };
-
-    console.log('errors', errors);
 
     return (
         <View style={styles.container}>
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
         marginTop: 40,
         color: 'white',
         height: 40,
-        backgroundColor: '#ec5990',
+        backgroundColor: '#AC5253',
         borderRadius: 4,
     },
     container: {
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop: 40,
         padding: 8,
-        backgroundColor: '#0e101c',
+        backgroundColor: '#72A8BC',
     },
     input: {
         backgroundColor: 'white',

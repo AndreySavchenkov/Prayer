@@ -2,13 +2,9 @@ import * as React from "react"
 import Svg, { Mask, Path, G } from "react-native-svg"
 
 export const IconSvgPrayerLine = () => (
-    <Svg width={29} height={23} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <Svg width={29} height={23} fill="none">
         <Mask
             id="a"
-            style={{
-                maskType: "alpha",
-            }}
-            maskUnits="userSpaceOnUse"
             x={0}
             y={0}
             width={29}

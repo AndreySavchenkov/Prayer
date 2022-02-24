@@ -8,8 +8,6 @@ import {PrayerComments} from "./PrayerComments";
 
 export const PrayerScreen = ({route}) => {
 
-
-
     return (
         <View>
             <PrayerHeader/>

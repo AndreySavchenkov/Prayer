@@ -17,7 +17,7 @@ export const ColumnScreen: FC<Props> = ({route}) => {
 
     const [isShow, setIsShow] = useState(false)
 
-    const prayers = useSelector<RootState>(state => state.prayer.prayers)
+    const prayers = useSelector((state:RootState) => state.prayer.prayers)
 
     const columnId = route.params.columnId;
 

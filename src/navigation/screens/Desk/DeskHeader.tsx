@@ -18,13 +18,9 @@ export const DeskHeader = () => {
             </View>
             <View style={styles.iconAdd}>
                 <TouchableOpacity onPress={showModal}>
-                    <Svg width={22} height={22} fill="#72A8BC" xmlns="http://www.w3.org/2000/svg">
+                    <Svg width={22} height={22} fill="#72A8BC" >
                         <Mask
                             id="a"
-                            style={{
-                                maskType: "alpha",
-                            }}
-                            maskUnits="userSpaceOnUse"
                             x={0}
                             y={0}
                             width={22}

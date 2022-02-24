@@ -4,16 +4,12 @@ import {useForm, Controller} from 'react-hook-form';
 import {Routes} from "../../routes";
 import {useNavigation} from "@react-navigation/native";
 import {useDispatch} from "react-redux";
-import {getToken, setToken} from "../../../store/loginSlice";
-import {authApi, columnApi} from "../../../api/api";
-import {useEffect} from "react";
-// import Constants from 'expo-constants';
-
+import {signUpAction} from "../../../store/loginSlice";
 
 export const SignUpScreen = () => {
 
     const dispatch = useDispatch();
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
 
     const {register, setValue, handleSubmit, control, reset, formState: {errors}} = useForm({
         defaultValues: {
@@ -23,12 +19,9 @@ export const SignUpScreen = () => {
         }
     });
 
-
-    // dispatch(getToken('312ddvasghryaPupdfskin@gmail.com','1ddVasfdhgfyasdfgPypkin','1dddfghdfganypasdfgword'))
-
-
     const onSubmit = data => {
-        // console.log(data);
+        console.log(data);
+        dispatch(signUpAction(data.Email,data.Name,data.Password))
     };
 
     const onChange = arg => {
@@ -119,7 +112,7 @@ const styles = StyleSheet.create({
         marginTop: 40,
         color: 'white',
         height: 40,
-        backgroundColor: '#ec5990',
+        backgroundColor: '#AC5253',
         borderRadius: 4,
     },
     container: {
@@ -127,7 +120,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop: 40,
         padding: 8,
-        backgroundColor: '#0e101c',
+        backgroundColor: '#72A8BC',
     },
     input: {
         backgroundColor: 'white',

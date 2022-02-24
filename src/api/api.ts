@@ -1,24 +1,24 @@
 import axios from "axios";
-import {useSelector} from "react-redux";
-import {RootState} from "../store/store";
+import {store} from "../store/store";
 
-
-//---------------------------AuthApi-----------------------------------------------------------------------------------
-export const authApi = {
-    signUp(email: string, name: string, password: string,) {
-        return axios.post('https://prayer.herokuapp.com/auth/sign-up/', {email, name, password,})
-    }
-}
-
-//---------------------------UserApi----------------------------------------------------------------------------------
-//nothing hooks - need fix!!!!!!!!!!!!!!!!!!!
-// const token = useSelector<RootState>(state => state.login.token)
+const token = store.getState().login.token;
 
 const instance = axios.create({
     baseURL: 'https://prayer.herokuapp.com',
     timeout: 5000,
-    headers: {'Authorization': `Bearer c5d7b17681772419da162c1fd3e57ae3871a147449fd78e62d452e34c8974ed5`}
+    headers: {'Authorization': `Bearer ${token}`}
 });
+
+
+export const authApi = {
+    signUp(email: string, name: string, password: string,) {
+        return axios.post('https://prayer.herokuapp.com/auth/sign-up/', {email, name, password,})
+    },
+    signIn(email: string, password: string) {
+        return axios.post('https://prayer.herokuapp.com/auth/sign-in', {email, password})
+    }
+}
+
 
 export const columnApi = {
     getColumns() {
@@ -30,10 +30,11 @@ export const columnApi = {
     addColumn(title: string, description: string, prayerId: number) {
         return instance.post('/columns', {title, description, prayerId})
     },
-    deleteColumn(columnId){
+    deleteColumn(columnId) {
         return instance.delete(`/columns/${columnId}`)
     }
 }
+
 
 export const prayersApi = {
     getPrayers() {

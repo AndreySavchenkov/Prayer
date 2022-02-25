@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ScrollView, StyleSheet} from "react-native";
+import {ScrollView, StyleSheet, View} from "react-native";
 import {DeskHeader} from "./DeskHeader";
 import {DeskItem} from "./DeskItem";
 import {useDispatch, useSelector} from "react-redux";
@@ -16,16 +16,21 @@ export const DeskScreen = () => {
     useEffect(() => {
         dispatch(getColumnsAction());
         dispatch(getPrayersAction());
-    }, [])
+    },[dispatch])
 
     return (
         <ScrollView style={styles.container}>
             <DeskHeader/>
-            {columns ? columns.map(item => <DeskItem key={item.id} columnId={item.id} text={item.title}/>) : null}
+            <View style={styles.columns}>
+                {columns ? columns.map(item => <DeskItem key={item.id} columnId={item.id} text={item.title}/>) : null}
+            </View>
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {},
+    columns: {
+        minHeight: 700,
+    }
 });

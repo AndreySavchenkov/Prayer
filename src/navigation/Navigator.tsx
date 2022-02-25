@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator();
 
 export const Navigator = () => {
 
-    const token = useSelector<RootState>(state => state.login.token)
+    const token = useSelector((state:RootState) => state.login.token)
 
     return (
         <NavigationContainer>

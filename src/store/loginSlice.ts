@@ -43,17 +43,22 @@ const loginSlice = createSlice({
 //----------------------------------------------------Sagas----------------------------------------------------------//
 
 export function* signUpWorkerSaga(action: ReturnType<typeof signUpAction>) {
-    const res = yield call(authApi.signUp, action.email, action.name, action.password)
-    console.log('signUp', res)
-    yield put(signUp({
-        name: res.data.name,
-        email: res.data.email,
-        id: res.data.id,
-        password: res.data.password,
-        token: res.data.token
-    }));
-    yield put(getColumn({columns: res.data.columns}));
+    try {
+        const res = yield call(authApi.signUp, action.email, action.name, action.password)
+        console.log('signUp', res)
+        yield put(signUp({
+            name: res.data.name,
+            email: res.data.email,
+            id: res.data.id,
+            password: res.data.password,
+            token: res.data.token
+        }));
+        yield put(getColumn({columns: res.data.columns}));
+    } catch (error) {
+        alert(error)
+    }
 }
+
 export const signUpAction = (email: string, name: string, password: string) => ({
     type: 'SAGA/SIGN_UP',
     email,
@@ -63,15 +68,21 @@ export const signUpAction = (email: string, name: string, password: string) => (
 
 
 export function* signInWorkerSaga(action: ReturnType<typeof signInAction>) {
-    const res = yield call(authApi.signIn, action.email, action.password)
-    console.log('signIn ->', res)
-    yield put(signIn({
-        name: res.data.name,
-        email: res.data.email,
-        id: res.data.id,
-        token: res.data.token
-    }));
+    try {
+        const res = yield call(authApi.signIn, action.email, action.password)
+        console.log('signIn ->', res)
+        yield put(signIn({
+            name: res.data.name,
+            email: res.data.email,
+            id: res.data.id,
+            token: res.data.token
+        }));
+    } catch (error) {
+        alert(error)
+    }
+
 }
+
 export const signInAction = (email: string, password: string) => ({
     type: 'SAGA/SIGN_IN',
     email,

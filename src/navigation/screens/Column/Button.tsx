@@ -1,19 +1,19 @@
 import * as React from "react";
 import {TouchableOpacity, Text, StyleSheet, View} from "react-native";
-import {FC} from "react";
+import {FC, memo} from "react";
 
 type Props = {
     text: string
     pressHandler: () => void
 }
 
-export const Button: FC<Props> = ({text, pressHandler}) => {
+export const Button: FC<Props> = memo(({text, pressHandler}) => {
     return (
         <TouchableOpacity  style={styles.buttonContainer} onPress={pressHandler}>
             <Text style={styles.buttonText}>{text}</Text>
         </TouchableOpacity>
     )
-}
+})
 
 const styles = StyleSheet.create({
     buttonContainer: {

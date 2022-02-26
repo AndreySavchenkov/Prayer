@@ -2,7 +2,7 @@ import * as React from "react";
 import {View, StyleSheet, Text, TouchableOpacity} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {Routes} from "../../routes";
-import {FC} from "react";
+import {FC, memo} from "react";
 import {IconSvgTrash} from "../../../components/icons/IconSvgTrash";
 import {useDispatch} from "react-redux";
 import {deleteColumn, deleteColumnAction} from "../../../store/columnSlice";
@@ -12,7 +12,7 @@ type Props = {
     text: string,
     columnId: number,
 }
-export const DeskItem: FC<Props> = ({text, columnId}) => {
+export const DeskItem: FC<Props> = memo(({text, columnId}) => {
 
     const navigation = useNavigation<any>();
     const dispatch = useDispatch();
@@ -32,7 +32,7 @@ export const DeskItem: FC<Props> = ({text, columnId}) => {
             </View>
         </TouchableOpacity>
     )
-}
+})
 
 const styles = StyleSheet.create({
     container: {

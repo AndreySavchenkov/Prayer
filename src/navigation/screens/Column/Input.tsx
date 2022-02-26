@@ -4,13 +4,13 @@ import Svg, {G, Mask, Path} from "react-native-svg";
 import {Controller, useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 import {addPrayerAction} from "../../../store/prayersSlice";
-import {FC} from "react";
+import {FC, memo} from "react";
 
 type Props = {
     columnId: number,
 }
 
-export const Input:FC<Props> = ({columnId}) => {
+export const Input:FC<Props> = memo(({columnId}) => {
 
     const dispatch = useDispatch();
 
@@ -42,13 +42,9 @@ export const Input:FC<Props> = ({columnId}) => {
             />
             <View style={styles.iconAdd}>
                 <TouchableOpacity onPress={handleSubmit(onSubmit)}>
-                    <Svg width={22} height={22} fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <Svg width={22} height={22} fill="none">
                         <Mask
                             id="a"
-                            style={{
-                                maskType: "alpha",
-                            }}
-                            maskUnits="userSpaceOnUse"
                             x={0}
                             y={0}
                             width={22}
@@ -69,7 +65,8 @@ export const Input:FC<Props> = ({columnId}) => {
         </View>
 
     )
-}
+})
+
 const styles = StyleSheet.create({
     inputContainer: {
         margin: 15,

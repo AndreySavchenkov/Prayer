@@ -5,7 +5,7 @@ import {Routes} from "../../routes";
 import {useNavigation} from "@react-navigation/native";
 import {useDispatch} from "react-redux";
 import {signInAction} from "../../../store/loginSlice";
-import {getColumnsAction} from "../../../store/columnSlice";
+
 
 export const SignInScreen = () => {
 

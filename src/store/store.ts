@@ -11,11 +11,13 @@ import prayersSlice, {
 } from "./prayersSlice";
 import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import commentsSlice, {addCommentWorkerSaga, deleteCommentWorkerSaga, getCommentsWorkerSaga} from "./commentsSlice";
 
 const rootReducer = combineReducers({
     login: loginReducer,
     column: columnSlice,
     prayer: prayersSlice,
+    comment: commentsSlice,
 })
 
 const persistConfig = {
@@ -48,6 +50,10 @@ function* rootWatcher() {
     yield takeEvery('SAGA/CHECKED_PRAYER', checkedPrayerWorkerSaga);
     yield takeEvery('SAGA/UNCHECKED_PRAYER', unCheckedPrayerWorkerSaga);
     yield takeEvery('SAGA/DELETE_PRAYER', deletePrayerWorkerSaga);
+
+    yield takeEvery('SAGA/ADD_COMMENT', addCommentWorkerSaga);
+    yield takeEvery('SAGA/GET_COMMENTS', getCommentsWorkerSaga);
+    yield takeEvery('SAGA/DELETE_COMMENT', deleteCommentWorkerSaga);
 }
 
 sagaMiddleware.run(rootWatcher)

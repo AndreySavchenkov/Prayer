@@ -7,6 +7,7 @@ import {RootState} from "../../../store/store";
 import {getColumnsAction} from "../../../store/columnSlice";
 import {useEffect} from "react";
 import {getPrayersAction} from "../../../store/prayersSlice";
+import {getCommentsAction} from "../../../store/commentsSlice";
 
 export const DeskScreen = () => {
 
@@ -16,6 +17,7 @@ export const DeskScreen = () => {
     useEffect(() => {
         dispatch(getColumnsAction());
         dispatch(getPrayersAction());
+        dispatch(getCommentsAction())
     },[dispatch])
 
     return (

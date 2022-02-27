@@ -10,7 +10,7 @@ type Props = {
     columnId: number,
 }
 
-export const Input:FC<Props> = memo(({columnId}) => {
+export const Input: FC<Props> = memo(({columnId}) => {
 
     const dispatch = useDispatch();
 
@@ -21,7 +21,8 @@ export const Input:FC<Props> = memo(({columnId}) => {
     });
 
     const onSubmit = (data) => {
-            dispatch(addPrayerAction(columnId, data.Text))
+        dispatch(addPrayerAction(columnId, data.Text));
+
     }
 
     return (
@@ -61,7 +62,6 @@ export const Input:FC<Props> = memo(({columnId}) => {
                     </Svg>
                 </TouchableOpacity>
             </View>
-
         </View>
 
     )

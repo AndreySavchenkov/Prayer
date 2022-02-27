@@ -52,7 +52,7 @@ export const PrayerList: FC<Props> = ({title, checked, description, prayerId}) =
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => navigation.navigate(Routes.PrayerScreen, {title, checked, description})}>
+                        onPress={() => navigation.navigate(Routes.PrayerScreen, {title, checked, description, prayerId})}>
                         <Text style={checked ? styles.text : styles.textChecked}>{title}</Text>
                     </TouchableOpacity>
                 </View>

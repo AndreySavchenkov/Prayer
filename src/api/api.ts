@@ -9,7 +9,6 @@ const instance = axios.create({
     headers: {'Authorization': `Bearer ${token}`}
 });
 
-
 export const authApi = {
     signUp(email: string, name: string, password: string,) {
         return axios.post('https://prayer.herokuapp.com/auth/sign-up/', {email, name, password,})
@@ -18,7 +17,6 @@ export const authApi = {
         return axios.post('https://prayer.herokuapp.com/auth/sign-in', {email, password})
     }
 }
-
 
 export const columnApi = {
     getColumns() {
@@ -32,9 +30,8 @@ export const columnApi = {
     },
     deleteColumn(columnId) {
         return instance.delete(`/columns/${columnId}`)
-    }
+    },
 }
-
 
 export const prayersApi = {
     getPrayers() {
@@ -48,5 +45,17 @@ export const prayersApi = {
     },
     deletePrayer(prayerId: number) {
         return instance.delete(`prayers/${prayerId}`)
-    }
+    },
+}
+
+export const commentsApi = {
+    getComments() {
+        return instance.get(`/comments`)
+    },
+    addComment(body: string, prayerId: number,) {
+        return instance.post(`/prayers/${prayerId}/comments`, {body, prayerId})
+    },
+    deleteComment(commentId: number) {
+        return instance.delete(`/comments/${commentId}`)
+    },
 }

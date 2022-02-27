@@ -13,7 +13,7 @@ type Props = {
     route: any
 }
 
-export const ColumnScreen: FC<Props> = ({route}) => {
+export const ColumnScreen:FC<Props> = ({route}) => {
 
     const [isShow, setIsShow] = useState(false)
 

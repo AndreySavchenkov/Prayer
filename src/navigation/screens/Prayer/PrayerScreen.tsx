@@ -5,18 +5,25 @@ import {PrayerDateChange} from "./PrayerDateChange";
 import {PrayerStatistics} from "./PrayerStatistics";
 import {PrayerMembers} from "./PrayerMembers";
 import {PrayerComments} from "./PrayerComments";
+import {FC} from "react";
 
-export const PrayerScreen = ({route}) => {
+type Props = {
+    route: any
+}
+
+export const PrayerScreen:FC<Props> = ({route}) => {
+
+    const prayerId = route.params.prayerId;
 
     return (
-        <View>
+        <ScrollView>
             <PrayerHeader/>
-            <ScrollView>
+            <View>
                 <PrayerDateChange/>
                 <PrayerStatistics/>
                 <PrayerMembers/>
-                <PrayerComments/>
-            </ScrollView>
-        </View>
+                <PrayerComments prayerId={prayerId}/>
+            </View>
+        </ScrollView>
     )
 }

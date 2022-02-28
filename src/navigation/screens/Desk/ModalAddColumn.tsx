@@ -10,11 +10,11 @@ type Props = {
     setIsShow: (isShow: boolean) => void
 }
 
-export const ModalAddColumn:FC<Props> = ({isShow,setIsShow}) => {
+export const ModalAddColumn: FC<Props> = ({isShow, setIsShow}) => {
 
     const dispatch = useDispatch();
 
-    const {handleSubmit, control,formState: {errors}} = useForm({
+    const {handleSubmit, reset, control, formState: {errors}} = useForm({
         defaultValues: {
             Text: ''
         }
@@ -22,30 +22,32 @@ export const ModalAddColumn:FC<Props> = ({isShow,setIsShow}) => {
 
     const onSubmit = (data) => {
         dispatch(addColumnAction(data.Text))
-        setIsShow(!isShow)
+        setIsShow(!isShow);
+        reset({Text: ''});
     }
 
-    return(
-       <View style={styles.container}>
-           <Controller
-               control={control}
-               render={({field: {onChange, onBlur, value}}) => (
-                   <TextInput
-                       style={styles.input}
-                       onBlur={onBlur}
-                       onChangeText={value => onChange(value)}
-                       value={value}
-                   />
-               )}
-               name="Text"
-               rules={{required: true}}
-           />
-           <Button
-               style={styles.button}
-               title="Create Column"
-               onPress={handleSubmit(onSubmit)}
-           />
-       </View>
+    return (
+        <View style={styles.container}>
+            <Controller
+                control={control}
+                render={({field: {onChange, onBlur, value}}) => (
+                    <TextInput
+                        style={styles.input}
+                        placeholder={"Add a column..."}
+                        onBlur={onBlur}
+                        onChangeText={value => onChange(value)}
+                        value={value}
+                    />
+                )}
+                name="Text"
+                rules={{required: true}}
+            />
+            <Button
+                style={styles.button}
+                title="Create Column"
+                onPress={handleSubmit(onSubmit)}
+            />
+        </View>
     )
 }
 
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 700,
         left: 0,
-        top:65,
+        top: 65,
 
     },
     input: {
@@ -69,6 +71,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     button: {
-      marginBottom: 400,
+        marginBottom: 400,
     }
 })

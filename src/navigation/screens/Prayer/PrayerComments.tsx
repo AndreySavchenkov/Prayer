@@ -26,12 +26,12 @@ export const PrayerComments: FC<Props> = ({prayerId}) => {
     });
 
     const onSubmit = (data) => {
-        dispatch(addCommentAction(data.Text, prayerId))
-        console.log('text -> ',data.Text)
+        dispatch(addCommentAction(data.Text, prayerId));
+        reset({Text: "",});
     }
 
     return (
-        <View  style={styles.container}>
+        <View style={styles.container}>
             <View>
                 <Text style={styles.commentsTitle}>COMMENTS</Text>
             </View>
@@ -48,6 +48,7 @@ export const PrayerComments: FC<Props> = ({prayerId}) => {
                     render={({field: {onChange, onBlur, value}}) => (
                         <TextInput
                             style={styles.input}
+                            placeholder={"Add a comment..."}
                             onBlur={onBlur}
                             onChangeText={value => onChange(value)}
                             value={value}
@@ -58,7 +59,7 @@ export const PrayerComments: FC<Props> = ({prayerId}) => {
                 />
                 <View style={styles.addCommentIcon}>
                     <TouchableOpacity onPress={handleSubmit(onSubmit)}>
-                        <Svg width={20} height={20} fill="none">
+                        <Svg width={20} height={20} fill="#BFB393">
                             <Path
                                 fillRule="evenodd"
                                 clipRule="evenodd"

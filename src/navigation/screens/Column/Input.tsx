@@ -22,7 +22,7 @@ export const Input: FC<Props> = memo(({columnId}) => {
 
     const onSubmit = (data) => {
         dispatch(addPrayerAction(columnId, data.Text));
-
+        reset({Text: ''});
     }
 
     return (
@@ -33,6 +33,7 @@ export const Input: FC<Props> = memo(({columnId}) => {
                 render={({field: {onChange, onBlur, value}}) => (
                     <TextInput
                         style={styles.input}
+                        placeholder={"Add a prayer..."}
                         onBlur={onBlur}
                         onChangeText={value => onChange(value)}
                         value={value}

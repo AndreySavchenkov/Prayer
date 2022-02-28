@@ -1,12 +1,14 @@
 import axios from "axios";
-import {store} from "../store/store";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const token = store.getState().login.token;
+export const getData = async () => {
+    const token = await AsyncStorage.getItem("token")
+    instance.defaults.headers['Authorization'] = "Bearer "+token
+};
 
 const instance = axios.create({
     baseURL: 'https://prayer.herokuapp.com',
     timeout: 5000,
-    headers: {'Authorization': `Bearer ${token}`}
 });
 
 export const authApi = {

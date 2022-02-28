@@ -9,6 +9,8 @@ import {useEffect} from "react";
 import {getPrayersAction} from "../../../store/prayersSlice";
 import {getCommentsAction} from "../../../store/commentsSlice";
 
+
+
 export const DeskScreen = () => {
 
     const columns = useSelector((state: RootState) => state.column.columns);
@@ -18,7 +20,7 @@ export const DeskScreen = () => {
         dispatch(getColumnsAction());
         dispatch(getPrayersAction());
         dispatch(getCommentsAction());
-    },[dispatch])
+    }, [])
 
     return (
         <ScrollView style={styles.container}>

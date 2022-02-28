@@ -10,11 +10,13 @@ import {SignUpScreen} from "./screens/SignUp/SignUpScreen";
 import {useSelector} from "react-redux";
 import {RootState} from "../store/store";
 
+
+
 const Stack = createNativeStackNavigator();
 
 export const Navigator = () => {
 
-    const token = useSelector((state:RootState) => state.login.token)
+    let token = useSelector((state:RootState) => state.login.token)
 
     return (
         <NavigationContainer>
@@ -30,8 +32,7 @@ export const Navigator = () => {
                         <Stack.Screen name={Routes.ColumnScreen} component={ColumnScreen} options={{headerShown: false}}/>
                         <Stack.Screen name={Routes.PrayerScreen} component={PrayerScreen} options={{headerShown: false}}/>
                     </>
-                )
-                }
+                )}
             </Stack.Navigator>
         </NavigationContainer>
     )

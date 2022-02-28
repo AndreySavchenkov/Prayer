@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    whitelist: ['login'],
+    whitelist: [''],
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

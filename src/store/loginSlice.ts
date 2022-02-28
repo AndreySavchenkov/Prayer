@@ -1,7 +1,10 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {authApi, columnApi} from "../api/api";
+import {authApi, getData} from "../api/api";
 import {call, put} from 'redux-saga/effects'
 import {getColumn} from "./columnSlice";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+
 
 
 type InitialState = {
@@ -42,10 +45,20 @@ const loginSlice = createSlice({
 
 //----------------------------------------------------Sagas----------------------------------------------------------//
 
+const storeData = async (value) => {
+    try {
+        await AsyncStorage.setItem('token', value)
+        console.log('storage-key=>',value)
+    } catch (e) {
+        // saving error
+    }
+}
+
 export function* signUpWorkerSaga(action: ReturnType<typeof signUpAction>) {
     try {
         const res = yield call(authApi.signUp, action.email, action.name, action.password)
-        console.log('signUp', res)
+        yield call(storeData,res.data.token)
+        yield call(getData)
         yield put(signUp({
             name: res.data.name,
             email: res.data.email,
@@ -70,7 +83,8 @@ export const signUpAction = (email: string, name: string, password: string) => (
 export function* signInWorkerSaga(action: ReturnType<typeof signInAction>) {
     try {
         const res = yield call(authApi.signIn, action.email, action.password)
-        console.log('signIn ->', res)
+        yield call(storeData,res.data.token)
+        yield call(getData)
         yield put(signIn({
             name: res.data.name,
             email: res.data.email,
@@ -80,7 +94,6 @@ export function* signInWorkerSaga(action: ReturnType<typeof signInAction>) {
     } catch (error) {
         alert(error)
     }
-
 }
 
 export const signInAction = (email: string, password: string) => ({

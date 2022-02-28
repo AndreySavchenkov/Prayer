@@ -11,20 +11,22 @@ import {getCommentsAction} from "../../../store/commentsSlice";
 
 export const DeskScreen = () => {
 
-    const columns = useSelector((state: RootState) => state.column.columns)
+    const columns = useSelector((state: RootState) => state.column.columns);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getColumnsAction());
         dispatch(getPrayersAction());
-        dispatch(getCommentsAction())
+        dispatch(getCommentsAction());
     },[dispatch])
 
     return (
         <ScrollView style={styles.container}>
             <DeskHeader/>
             <View style={styles.columns}>
-                {columns ? columns.map(item => <DeskItem key={item.id} columnId={item.id} text={item.title}/>) : null}
+                {columns ? columns.map(item => <DeskItem key={item.id}
+                                                         text={item.title}
+                                                         columnId={item.id}/>) : null}
             </View>
         </ScrollView>
     )

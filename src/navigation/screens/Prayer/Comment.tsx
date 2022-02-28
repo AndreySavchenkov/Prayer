@@ -8,16 +8,20 @@ import {deleteCommentAction} from "../../../store/commentsSlice";
 
 type Props = {
     body: string
+    created: string
     commentId: number
 }
 
-export const Comment:FC<Props> = ({body,commentId}) => {
+export const Comment:FC<Props> = ({body,commentId,created}) => {
 
     const dispatch = useDispatch()
 
     const deleteHandler = () => {
         dispatch(deleteCommentAction(commentId))
     }
+
+   const newDate = new Date(created).toLocaleDateString()
+    console.log(newDate)
 
     return (
         <View style={styles.mainContainer}>
@@ -26,13 +30,13 @@ export const Comment:FC<Props> = ({body,commentId}) => {
                 <View style={styles.textContainer}>
                     <View style={styles.textTitleContainer}>
                         <Text style={styles.name}>Anna Barber</Text>
-                        <Text style={styles.date}>2 days ago</Text>
+                        <Text style={styles.date}>{newDate}</Text>
                     </View>
                     <Text style={styles.text}>{body}</Text>
                 </View>
             </View>
             <TouchableOpacity style={styles.icon} onPress={deleteHandler}>
-                <IconSvgTrash/>
+                <IconSvgTrash color={'#BFB393'}/>
             </TouchableOpacity>
         </View>
 
@@ -63,6 +67,7 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: 17,
+        fontWeight: '900',
         lineHeight: 20,
         color: '#514D47',
     },

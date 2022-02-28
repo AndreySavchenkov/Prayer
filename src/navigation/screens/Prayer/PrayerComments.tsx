@@ -27,7 +27,7 @@ export const PrayerComments: FC<Props> = ({prayerId}) => {
 
     const onSubmit = (data) => {
         dispatch(addCommentAction(data.Text, prayerId));
-        reset({Text: "",});
+        reset({Text: ""});
     }
 
     return (
@@ -39,6 +39,7 @@ export const PrayerComments: FC<Props> = ({prayerId}) => {
                 {
                     commentsInThisPrayer.map(item => <Comment key={item.id}
                                                               body={item.body}
+                                                              created={item.created}
                                                               commentId={item.id}/>)
                 }
             </View>

@@ -27,7 +27,7 @@ export const DeskItem: FC<Props> = memo(({text, columnId}) => {
             <View style={styles.container}>
                 <Text style={styles.text}>{text}</Text>
                 <TouchableOpacity onPress={pressHandler}>
-                    <IconSvgTrash/>
+                    <IconSvgTrash color={"#72A8BC"}/>
                 </TouchableOpacity>
             </View>
         </TouchableOpacity>

@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 17,
         lineHeight: 20,
+        width: 200,
         color: '#40435B',
     },
     textChecked: {

@@ -21,13 +21,9 @@ export const PrayerMembers = () => {
                            source={require('../../../assets/img/avatar.png')} />
                 </View>
                 <View style={styles.buttonAdd}>
-                    <Svg width={22} height={22} fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <Svg width={22} height={22} fill="none">
                         <Mask
                             id="a"
-                            style={{
-                                maskType: "alpha",
-                            }}
-                            maskUnits="userSpaceOnUse"
                             x={0}
                             y={0}
                             width={22}

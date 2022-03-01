@@ -7,7 +7,6 @@ import {useDispatch} from "react-redux";
 import {signInAction} from "../../../store/loginSlice";
 
 
-
 export const SignInScreen = () => {
 
     const dispatch = useDispatch();
@@ -21,7 +20,7 @@ export const SignInScreen = () => {
     });
 
     const onSubmit = async (data) => {
-        dispatch(signInAction(data.Email,data.Password))
+        dispatch(signInAction(data.Email, data.Password))
     };
 
     return (

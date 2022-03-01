@@ -63,7 +63,6 @@ export const addCommentAction = (body: string, prayerId: number) => ({type: 'SAG
 export function* getCommentsWorkerSaga(action: ReturnType<typeof getCommentsAction>){
     try {
         const res = yield call(commentsApi.getComments)
-        console.log('get comments ->', res)
         yield put(getComments({comments: res.data}));
     } catch (error) {
         alert(error)

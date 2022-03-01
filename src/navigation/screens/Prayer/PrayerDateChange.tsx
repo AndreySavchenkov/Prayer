@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from "react-native";
 import {IconSvgStateLine} from "../../../components/icons/IconSvgStateLine";
 
 export const PrayerDateChange = () => {
-    return(
+    return (
         <View style={styles.container}>
             <View style={styles.icon}>
                 <IconSvgStateLine color={'#AC5253'}/>

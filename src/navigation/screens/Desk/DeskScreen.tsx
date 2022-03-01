@@ -8,7 +8,7 @@ import {getColumnsAction} from "../../../store/columnSlice";
 import {useEffect} from "react";
 import {getPrayersAction} from "../../../store/prayersSlice";
 import {getCommentsAction} from "../../../store/commentsSlice";
-
+import {addTokenFromRedux} from "../../../api/api";
 
 
 export const DeskScreen = () => {
@@ -17,6 +17,7 @@ export const DeskScreen = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        addTokenFromRedux()
         dispatch(getColumnsAction());
         dispatch(getPrayersAction());
         dispatch(getCommentsAction());

@@ -10,27 +10,30 @@ import {SignUpScreen} from "./screens/SignUp/SignUpScreen";
 import {useSelector} from "react-redux";
 import {RootState} from "../store/store";
 
-
-
 const Stack = createNativeStackNavigator();
 
 export const Navigator = () => {
 
-    let token = useSelector((state:RootState) => state.login.token)
+    let token = useSelector((state: RootState) => state.login.token)
 
     return (
         <NavigationContainer>
             <Stack.Navigator>
                 {!token ? (
                     <>
-                        <Stack.Screen name={Routes.SignInScreen} component={SignInScreen} options={{headerShown: false}}/>
-                        <Stack.Screen name={Routes.SignUpScreen} component={SignUpScreen} options={{headerShown: false}}/>
+                        <Stack.Screen name={Routes.SignInScreen} component={SignInScreen}
+                                      options={{headerShown: false}}/>
+                        <Stack.Screen name={Routes.SignUpScreen} component={SignUpScreen}
+                                      options={{headerShown: false}}/>
                     </>
                 ) : (
                     <>
-                        <Stack.Screen name={Routes.DeskScreen} component={DeskScreen} options={{headerShown: false}}/>
-                        <Stack.Screen name={Routes.ColumnScreen} component={ColumnScreen} options={{headerShown: false}}/>
-                        <Stack.Screen name={Routes.PrayerScreen} component={PrayerScreen} options={{headerShown: false}}/>
+                        <Stack.Screen name={Routes.DeskScreen} component={DeskScreen}
+                                      options={{headerShown: false}}/>
+                        <Stack.Screen name={Routes.ColumnScreen} component={ColumnScreen}
+                                      options={{headerShown: false}}/>
+                        <Stack.Screen name={Routes.PrayerScreen} component={PrayerScreen}
+                                      options={{headerShown: false}}/>
                     </>
                 )}
             </Stack.Navigator>

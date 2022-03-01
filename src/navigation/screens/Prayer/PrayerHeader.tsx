@@ -7,7 +7,6 @@ export const PrayerHeader = () => {
 
     const navigation = useNavigation();
 
-
     return (
         <View style={styles.container}>
             <View style={styles.iconContainer}>

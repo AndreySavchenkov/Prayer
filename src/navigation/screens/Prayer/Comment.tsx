@@ -12,7 +12,7 @@ type Props = {
     commentId: number
 }
 
-export const Comment:FC<Props> = ({body,commentId,created}) => {
+export const Comment: FC<Props> = ({body, commentId, created}) => {
 
     const dispatch = useDispatch()
 
@@ -20,7 +20,7 @@ export const Comment:FC<Props> = ({body,commentId,created}) => {
         dispatch(deleteCommentAction(commentId))
     }
 
-   const newDate = new Date(created).toLocaleDateString()
+    const newDate = new Date(created).toLocaleDateString()
     console.log(newDate)
 
     return (

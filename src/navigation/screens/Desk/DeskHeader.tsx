@@ -18,7 +18,7 @@ export const DeskHeader = () => {
             </View>
             <View style={styles.iconAdd}>
                 <TouchableOpacity onPress={showModal}>
-                    <Svg width={22} height={22} fill="#72A8BC" >
+                    <Svg width={22} height={22} fill="#72A8BC">
                         <Mask
                             id="a"
                             x={0}

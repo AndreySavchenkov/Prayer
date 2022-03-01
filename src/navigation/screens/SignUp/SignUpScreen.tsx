@@ -11,7 +11,7 @@ export const SignUpScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation<any>();
 
-    const {register, setValue, handleSubmit, control, reset, formState: {errors}} = useForm({
+    const {handleSubmit, control, formState: {errors}} = useForm({
         defaultValues: {
             Email: '',
             Name: '',
@@ -20,14 +20,7 @@ export const SignUpScreen = () => {
     });
 
     const onSubmit = data => {
-        console.log(data);
-        dispatch(signUpAction(data.Email,data.Name,data.Password))
-    };
-
-    const onChange = arg => {
-        return {
-            value: arg.nativeEvent.text,
-        };
+        dispatch(signUpAction(data.Email, data.Name, data.Password))
     };
 
 

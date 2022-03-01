@@ -43,7 +43,6 @@ const prayerSlice = createSlice({
 export function* getPrayersWorkerSaga(action: ReturnType<typeof getPrayersAction>) {
     try {
         const res = yield call(prayersApi.getPrayers)
-        console.log(res)
         yield put(getPrayer({prayers: res.data}));
     } catch (error) {
         alert(error)
@@ -55,7 +54,6 @@ export const getPrayersAction = () => ({type: 'SAGA/GET_PRAYERS'})
 export function* addPrayerWorkerSaga(action: ReturnType<typeof addPrayerAction>) {
     try {
         const res = yield call(prayersApi.addPrayer, action.columnId, action.title, "", true)
-        console.log(res)
         yield put(addPrayer({
             prayer: {
                 id: res.data.id,
@@ -76,7 +74,6 @@ export function* checkedPrayerWorkerSaga(action: ReturnType<typeof checkedPrayer
     try {
         yield call(prayersApi.toggleCheckedPrayer, action.prayerId, false);
         const res = yield call(prayersApi.getPrayers)
-        console.log(res)
         yield put(getPrayer({prayers: res.data}));
     } catch (error) {
         alert(error)
@@ -89,7 +86,6 @@ export function* unCheckedPrayerWorkerSaga(action: ReturnType<typeof unCheckedPr
     try {
         yield call(prayersApi.toggleCheckedPrayer, action.prayerId, true);
         const res = yield call(prayersApi.getPrayers)
-        console.log(res)
         yield put(getPrayer({prayers: res.data}));
     } catch (error) {
         alert(error)

@@ -11,7 +11,7 @@ type Props = {
     route: any
 }
 
-export const PrayerScreen:FC<Props> = ({route}) => {
+export const PrayerScreen: FC<Props> = ({route}) => {
 
     const prayerId = route.params.prayerId;
 

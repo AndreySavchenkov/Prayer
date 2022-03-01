@@ -39,7 +39,6 @@ const columnSlice = createSlice({
 export function* getColumnsWorkerSaga(action: ReturnType<typeof getColumnsAction>) {
     try {
         const res = yield call(columnApi.getColumns)
-        console.log('get columns ->', res)
         yield put(getColumn({columns: res.data}));
     } catch (error) {
         alert(error)
@@ -51,7 +50,6 @@ export const getColumnsAction = () => ({type: 'SAGA/GET_COLUMNS'})
 export function* addColumnWorkerSaga(action: ReturnType<typeof addColumnAction>) {
     try {
         const res = yield call(columnApi.addColumn, action.title, "", 0);
-        console.log(res)
         yield put(addColumn({
             column: {
                 id: res.data.id,

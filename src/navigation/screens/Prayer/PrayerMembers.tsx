@@ -1,5 +1,5 @@
 import * as React from "react";
-import {StyleSheet, Text, View,Image} from "react-native";
+import {StyleSheet, Text, View, Image} from "react-native";
 import Svg, {G, Mask, Path} from "react-native-svg";
 
 
@@ -10,15 +10,15 @@ export const PrayerMembers = () => {
             <View style={styles.avatarContainer}>
                 <View style={styles.avatarItem}>
                     <Image style={{width: 32, height: 32}}
-                           source={require('../../../assets/img/avatar.png')} />
+                           source={require('../../../assets/img/avatar.png')}/>
                 </View>
                 <View style={styles.avatarItem}>
                     <Image style={{width: 32, height: 32}}
-                           source={require('../../../assets/img/avatar.png')} />
+                           source={require('../../../assets/img/avatar.png')}/>
                 </View>
                 <View style={styles.avatarItem}>
                     <Image style={{width: 32, height: 32}}
-                           source={require('../../../assets/img/avatar.png')} />
+                           source={require('../../../assets/img/avatar.png')}/>
                 </View>
                 <View style={styles.buttonAdd}>
                     <Svg width={22} height={22} fill="none">
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     avatarItem: {
         marginRight: 10,
     },
-    buttonAdd:{
+    buttonAdd: {
         width: 32,
         height: 32,
         borderRadius: 50,
